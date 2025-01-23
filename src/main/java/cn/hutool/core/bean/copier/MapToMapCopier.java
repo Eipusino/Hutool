@@ -47,13 +47,13 @@ public class MapToMapCopier extends AbsCopier<Map, Map> {
 			}
 
 			// 忽略不需要拷贝的 key,
-			if (false == copyOptions.testKeyFilter(sKey)) {
+			if (!copyOptions.testKeyFilter(sKey)) {
 				return;
 			}
 
 			final Object targetValue = target.get(sKey);
 			// 非覆盖模式下，如果目标值存在，则跳过
-			if (false == copyOptions.override && null != targetValue) {
+			if (!copyOptions.override && null != targetValue) {
 				return;
 			}
 
@@ -68,7 +68,7 @@ public class MapToMapCopier extends AbsCopier<Map, Map> {
 			sValue = copyOptions.editFieldValue(sKey.toString(), sValue);
 
 			// 忽略空值
-			if (true == copyOptions.ignoreNullValue && sValue == null) {
+			if (copyOptions.ignoreNullValue && sValue == null) {
 				return;
 			}
 

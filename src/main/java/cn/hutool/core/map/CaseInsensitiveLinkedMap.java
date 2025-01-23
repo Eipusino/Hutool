@@ -1,5 +1,6 @@
 package cn.hutool.core.map;
 
+import java.io.*;
 import java.util.*;
 
 /**
@@ -13,6 +14,7 @@ import java.util.*;
  * @since 3.3.1
  */
 public class CaseInsensitiveLinkedMap<K, V> extends CaseInsensitiveMap<K, V> {
+	@Serial
 	private static final long serialVersionUID = 4043263744224569870L;
 
 	// ------------------------------------------------------------------------- Constructor start

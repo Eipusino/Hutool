@@ -13,6 +13,7 @@ import java.util.concurrent.atomic.*;
  *
  */
 public class LocalPortGenerater implements Serializable{
+	@Serial
 	private static final long serialVersionUID = 1L;
 
 	/** 备选的本地端口 */
@@ -35,7 +36,7 @@ public class LocalPortGenerater implements Serializable{
 	public int generate() {
 		int validPort = alternativePort.get();
 		// 获取可用端口
-		while (false == NetUtil.isUsableLocalPort(validPort)) {
+		while (!NetUtil.isUsableLocalPort(validPort)) {
 			validPort = alternativePort.incrementAndGet();
 		}
 		return validPort;

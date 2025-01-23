@@ -7,12 +7,13 @@ import java.util.*;
 
 /**
  * 排列A(n, m)<br>
- * 排列组合相关类 参考：http://cgs1999.iteye.com/blog/2327664
+ * 排列组合相关类 参考：<a href="http://cgs1999.iteye.com/blog/2327664">...</a>
  *
  * @author looly
  * @since 4.0.7
  */
 public class Arrangement implements Serializable {
+	@Serial
 	private static final long serialVersionUID = 1L;
 
 	private final String[] datas;

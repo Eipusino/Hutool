@@ -5,6 +5,7 @@ import cn.hutool.core.lang.*;
 import cn.hutool.core.net.*;
 import cn.hutool.core.util.*;
 
+import java.io.*;
 import java.net.*;
 import java.nio.charset.*;
 
@@ -21,6 +22,7 @@ import java.nio.charset.*;
  * @since 5.3.1
  */
 public final class UrlBuilder implements Builder<String> {
+	@Serial
 	private static final long serialVersionUID = 1L;
 	private static final String DEFAULT_SCHEME = "http";
 
@@ -104,7 +106,7 @@ public final class UrlBuilder implements Builder<String> {
 		Assert.notBlank(httpUrl, "Http url must be not blank!");
 		httpUrl = StrUtil.trimStart(httpUrl);
 		// issue#I66CIR
-		if(false == StrUtil.startWithAnyIgnoreCase(httpUrl, "http://", "https://")){
+		if(!StrUtil.startWithAnyIgnoreCase(httpUrl, "http://", "https://")){
 			httpUrl = "http://" + httpUrl;
 		}
 		return of(URLUtil.toUrlForHttp(httpUrl), charset);

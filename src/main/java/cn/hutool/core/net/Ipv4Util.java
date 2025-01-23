@@ -11,13 +11,12 @@ import java.util.regex.Matcher;
 /**
  * IPV4地址工具类
  *
- * <p>pr自：https://gitee.com/loolly/hutool/pulls/161</p>
+ * <p>pr自：<a href="https://gitee.com/loolly/hutool/pulls/161">...</a></p>
  *
  * @author ZhuKun
  * @since 5.4.1
  */
 public class Ipv4Util {
-
 	public static final String LOCAL_IP = "127.0.0.1";
 
 	/**
@@ -249,7 +248,7 @@ public class Ipv4Util {
 	 */
 	public static int countByMaskBit(int maskBit, boolean isAll) {
 		//如果是可用地址的情况，掩码位小于等于0或大于等于32，则可用地址为0
-		if ((false == isAll) && (maskBit <= 0 || maskBit >= 32)) {
+		if ((!isAll) && (maskBit <= 0 || maskBit >= 32)) {
 			return 0;
 		}
 
@@ -305,7 +304,7 @@ public class Ipv4Util {
 		int[] fromIpSplit = StrUtil.split(fromIp, CharUtil.DOT).stream().mapToInt(Integer::parseInt).toArray();
 		int[] toIpSplit = StrUtil.split(toIp, CharUtil.DOT).stream().mapToInt(Integer::parseInt).toArray();
 		for (int i = fromIpSplit.length - 1; i >= 0; i--) {
-			count += (toIpSplit[i] - fromIpSplit[i]) * Math.pow(256, fromIpSplit.length - i - 1);
+			count += (int) ((toIpSplit[i] - fromIpSplit[i]) * Math.pow(256, fromIpSplit.length - i - 1));
 		}
 		return count;
 	}
@@ -369,7 +368,7 @@ public class Ipv4Util {
 	 * @return 是否匹配
 	 */
 	public static boolean matches(String wildcard, String ipAddress) {
-		if (false == ReUtil.isMatch(PatternPool.IPV4, ipAddress)) {
+		if (!ReUtil.isMatch(PatternPool.IPV4, ipAddress)) {
 			return false;
 		}
 
@@ -381,8 +380,8 @@ public class Ipv4Util {
 		}
 
 		for (int i = 0; i < wildcardSegments.length; i++) {
-			if (false == "*".equals(wildcardSegments[i])
-				&& false == wildcardSegments[i].equals(ipSegments[i])) {
+			if (!"*".equals(wildcardSegments[i])
+				&& !wildcardSegments[i].equals(ipSegments[i])) {
 				return false;
 			}
 		}

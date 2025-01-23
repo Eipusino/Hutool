@@ -547,8 +547,7 @@ public class ThreadUtil {
 	 * @since 3.1.2
 	 */
 	public static ThreadGroup currentThreadGroup() {
-		final SecurityManager s = System.getSecurityManager();
-		return (null != s) ? s.getThreadGroup() : Thread.currentThread().getThreadGroup();
+		return Thread.currentThread().getThreadGroup();
 	}
 
 	/**

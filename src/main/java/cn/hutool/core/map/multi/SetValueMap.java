@@ -1,5 +1,6 @@
 package cn.hutool.core.map.multi;
 
+import java.io.*;
 import java.util.*;
 
 /**
@@ -12,6 +13,7 @@ import java.util.*;
  * @since 4.3.3
  */
 public class SetValueMap<K, V> extends AbsCollValueMap<K, V, Set<V>> {
+	@Serial
 	private static final long serialVersionUID = 6044017508487827899L;
 
 	// ------------------------------------------------------------------------- Constructor start

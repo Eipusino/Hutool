@@ -22,6 +22,7 @@ import java.util.*;
  */
 @Deprecated
 public class URLEncoder implements Serializable {
+	@Serial
 	private static final long serialVersionUID = 1L;
 
 	// --------------------------------------------------------------------------------------------- Static method start

@@ -46,7 +46,7 @@ public class MapUtil {
 	 * @return 是否为非空
 	 */
 	public static boolean isNotEmpty(Map<?, ?> map) {
-		return null != map && false == map.isEmpty();
+		return null != map && !map.isEmpty();
 	}
 
 	/**
@@ -155,7 +155,7 @@ public class MapUtil {
 	 */
 	public static <K, V> TreeMap<K, V> newTreeMap(Map<K, V> map, Comparator<? super K> comparator) {
 		final TreeMap<K, V> treeMap = new TreeMap<>(comparator);
-		if (false == isEmpty(map)) {
+		if (!isEmpty(map)) {
 			treeMap.putAll(map);
 		}
 		return treeMap;
@@ -338,11 +338,9 @@ public class MapUtil {
 		final HashMap<Object, Object> map = new HashMap<>((int) (array.length * 1.5));
 		for (int i = 0; i < array.length; i++) {
 			final Object object = array[i];
-			if (object instanceof Map.Entry) {
-				Map.Entry entry = (Map.Entry) object;
+			if (object instanceof Map.Entry entry) {
 				map.put(entry.getKey(), entry.getValue());
-			} else if (object instanceof Object[]) {
-				final Object[] entry = (Object[]) object;
+			} else if (object instanceof Object[] entry) {
 				if (entry.length > 1) {
 					map.put(entry[0], entry[1]);
 				}
@@ -355,8 +353,7 @@ public class MapUtil {
 						map.put(key, value);
 					}
 				}
-			} else if (object instanceof Iterator) {
-				final Iterator iter = ((Iterator) object);
+			} else if (object instanceof Iterator iter) {
 				if (iter.hasNext()) {
 					final Object key = iter.next();
 					if (iter.hasNext()) {
@@ -481,11 +478,11 @@ public class MapUtil {
 					}
 				}
 			}
-			if (false == map.isEmpty()) {
+			if (!map.isEmpty()) {
 				resultList.add(map);
 			}
 			index++;
-		} while (false == isEnd);
+		} while (!isEnd);
 
 		return resultList;
 	}
@@ -616,7 +613,7 @@ public class MapUtil {
 		boolean isFirst = true;
 		if (isNotEmpty(map)) {
 			for (Entry<K, V> entry : map.entrySet()) {
-				if (false == isIgnoreNull || entry.getKey() != null && entry.getValue() != null) {
+				if (!isIgnoreNull || entry.getKey() != null && entry.getValue() != null) {
 					if (isFirst) {
 						isFirst = false;
 					} else {
@@ -667,7 +664,7 @@ public class MapUtil {
 		}
 
 		// issue#3162@Github，在构造中put值，会导致新建map带有值内容，此处清空
-		if (false == map2.isEmpty()) {
+		if (!map2.isEmpty()) {
 			map2.clear();
 		}
 
@@ -748,7 +745,7 @@ public class MapUtil {
 		}
 
 		// issue#3162@Github，在构造中put值，会导致新建map带有值内容，此处清空
-		if (false == map2.isEmpty()) {
+		if (!map2.isEmpty()) {
 			map2.clear();
 		}
 
@@ -838,9 +835,8 @@ public class MapUtil {
 			return null;
 		}
 
-		if (map instanceof TreeMap) {
+		if (map instanceof TreeMap<K, V> result) {
 			// 已经是可排序Map，此时只有比较器一致才返回原map
-			TreeMap<K, V> result = (TreeMap<K, V>) map;
 			if (null == comparator || comparator.equals(result.comparator())) {
 				return result;
 			}
@@ -1458,7 +1454,7 @@ public class MapUtil {
 	 * 方法来自Dubbo，解决使用ConcurrentHashMap.computeIfAbsent导致的死循环问题。（issues#2349）<br>
 	 * A temporary workaround for Java 8 specific performance issue JDK-8161372 .<br>
 	 * This class should be removed once we drop Java 8 support.<br>
-	 * 参考：https://github.com/apache/dubbo/blob/3.2/dubbo-common/src/main/java/org/apache/dubbo/common/utils/ConcurrentHashMapUtils.java
+	 * 参考：<a href="https://github.com/apache/dubbo/blob/3.2/dubbo-common/src/main/java/org/apache/dubbo/common/utils/ConcurrentHashMapUtils.java">...</a>
 	 *
 	 * @param <K>             键类型
 	 * @param <V>             值类型

@@ -25,13 +25,11 @@ import java.util.*;
  * @since 5.7.23
  */
 public abstract class AbsTable<R, C, V> implements Table<R, C, V> {
-
 	@Override
 	public boolean equals(Object obj) {
 		if (obj == this) {
 			return true;
-		} else if (obj instanceof Table) {
-			final Table<?, ?, ?> that = (Table<?, ?, ?>) obj;
+		} else if (obj instanceof Table<?, ?, ?> that) {
 			return this.cellSet().equals(that.cellSet());
 		} else {
 			return false;
@@ -149,7 +147,7 @@ public abstract class AbsTable<R, C, V> implements Table<R, C, V> {
 
 		@Override
 		public Cell<R, C, V> next() {
-			if (false == columnIterator.hasNext()) {
+			if (!columnIterator.hasNext()) {
 				rowEntry = rowIterator.next();
 				columnIterator = rowEntry.getValue().entrySet().iterator();
 			}
@@ -175,6 +173,7 @@ public abstract class AbsTable<R, C, V> implements Table<R, C, V> {
 	 * @param <V> 值类型
 	 */
 	private static class SimpleCell<R, C, V> implements Cell<R, C, V>, Serializable {
+		@Serial
 		private static final long serialVersionUID = 1L;
 
 		private final R rowKey;
@@ -207,8 +206,7 @@ public abstract class AbsTable<R, C, V> implements Table<R, C, V> {
 			if (obj == this) {
 				return true;
 			}
-			if (obj instanceof Cell) {
-				Cell<?, ?, ?> other = (Cell<?, ?, ?>) obj;
+			if (obj instanceof Cell<?, ?, ?> other) {
 				return ObjectUtil.equal(rowKey, other.getRowKey())
 						&& ObjectUtil.equal(columnKey, other.getColumnKey())
 						&& ObjectUtil.equal(value, other.getValue());

@@ -48,7 +48,7 @@ public class BeanToBeanCopier<S, T> extends AbsCopier<S, T> {
 
 		final Map<String, PropDesc> sourcePropDescMap = BeanUtil.getBeanDesc(source.getClass()).getPropMap(copyOptions.ignoreCase);
 		sourcePropDescMap.forEach((sFieldName, sDesc) -> {
-			if (null == sFieldName || false == sDesc.isReadable(copyOptions.transientSupport)) {
+			if (null == sFieldName || !sDesc.isReadable(copyOptions.transientSupport)) {
 				// 字段空或不可读，跳过
 				return;
 			}
@@ -60,20 +60,20 @@ public class BeanToBeanCopier<S, T> extends AbsCopier<S, T> {
 			}
 
 			// 忽略不需要拷贝的 key,
-			if (false == copyOptions.testKeyFilter(sFieldName)) {
+			if (!copyOptions.testKeyFilter(sFieldName)) {
 				return;
 			}
 
 			// 检查目标字段可写性
 			final PropDesc tDesc = this.copyOptions.findPropDesc(targetPropDescMap, sFieldName);
-			if (null == tDesc || false == tDesc.isWritable(this.copyOptions.transientSupport)) {
+			if (null == tDesc || !tDesc.isWritable(this.copyOptions.transientSupport)) {
 				// 字段不可写，跳过之
 				return;
 			}
 
 			// 检查源对象属性是否过滤属性
 			Object sValue = sDesc.getValue(this.source);
-			if (false == copyOptions.testPropertyFilter(sDesc.getField(), sValue)) {
+			if (!copyOptions.testPropertyFilter(sDesc.getField(), sValue)) {
 				return;
 			}
 

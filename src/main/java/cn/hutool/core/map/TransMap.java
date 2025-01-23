@@ -1,5 +1,6 @@
 package cn.hutool.core.map;
 
+import java.io.*;
 import java.util.*;
 import java.util.function.*;
 
@@ -13,6 +14,7 @@ import java.util.function.*;
  * @since 5.8.0
  */
 public abstract class TransMap<K, V> extends MapWrapper<K, V> {
+	@Serial
 	private static final long serialVersionUID = 1L;
 
 	/**

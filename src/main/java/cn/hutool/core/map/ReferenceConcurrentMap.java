@@ -21,7 +21,6 @@ import java.util.stream.*;
  * @since 5.8.0
  */
 public class ReferenceConcurrentMap<K, V> implements ConcurrentMap<K, V>, Iterable<Map.Entry<K, V>>, Serializable {
-
 	final ConcurrentMap<Reference<K>, V> raw;
 	private final ReferenceQueue<K> lastQueue;
 	private final ReferenceUtil.ReferenceType keyType;

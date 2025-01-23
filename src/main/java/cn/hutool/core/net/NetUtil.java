@@ -21,7 +21,6 @@ import java.util.*;
  * @author looly
  */
 public class NetUtil {
-
 	/**
 	 * 本地IPv4地址
 	 */
@@ -138,7 +137,7 @@ public class NetUtil {
 	 * @return 是否可用
 	 */
 	public static boolean isUsableLocalPort(int port) {
-		if (false == isValidPort(port)) {
+		if (!isValidPort(port)) {
 			// 给定的IP未在指定端口范围中
 			return false;
 		}
@@ -461,15 +460,11 @@ public class NetUtil {
 			throw new UtilException(e);
 		}
 
-		if (networkInterfaces == null) {
-			throw new UtilException("Get network interface error!");
-		}
-
 		final LinkedHashSet<InetAddress> ipSet = new LinkedHashSet<>();
 
 		while (networkInterfaces.hasMoreElements()) {
 			final NetworkInterface networkInterface = networkInterfaces.nextElement();
-			if (networkInterfaceFilter != null && false == networkInterfaceFilter.accept(networkInterface)) {
+			if (networkInterfaceFilter != null && !networkInterfaceFilter.accept(networkInterface)) {
 				continue;
 			}
 			final Enumeration<InetAddress> inetAddresses = networkInterface.getInetAddresses();
@@ -489,7 +484,7 @@ public class NetUtil {
 	 * 如果获取失败调用 {@link InetAddress#getLocalHost()}方法获取。<br>
 	 * 此方法不会抛出异常，获取失败将返回{@code null}<br>
 	 * <p>
-	 * 参考：http://stackoverflow.com/questions/9481865/getting-the-ip-address-of-the-current-machine-using-java
+	 * 参考：<a href="http://stackoverflow.com/questions/9481865/getting-the-ip-address-of-the-current-machine-using-java">...</a>
 	 *
 	 * @return 本机网卡IP地址，获取失败返回{@code null}
 	 * @since 3.0.7
@@ -512,7 +507,7 @@ public class NetUtil {
 	 * <p>
 	 * 此方法不会抛出异常，获取失败将返回{@code null}<br>
 	 * <p>
-	 * 见：https://github.com/dromara/hutool/issues/428
+	 * 见：<a href="https://github.com/dromara/hutool/issues/428">...</a>
 	 *
 	 * @return 本机网卡IP地址，获取失败返回{@code null}
 	 * @since 3.0.1
@@ -520,7 +515,7 @@ public class NetUtil {
 	public static InetAddress getLocalhost() {
 		final LinkedHashSet<InetAddress> localAddressList = localAddressList(address -> {
 			// 非loopback地址，指127.*.*.*的地址
-			return false == address.isLoopbackAddress()
+			return !address.isLoopbackAddress()
 				// 需为IPV4地址
 				&& address instanceof Inet4Address;
 		});
@@ -528,7 +523,7 @@ public class NetUtil {
 		if (CollUtil.isNotEmpty(localAddressList)) {
 			InetAddress address2 = null;
 			for (InetAddress inetAddress : localAddressList) {
-				if (false == inetAddress.isSiteLocalAddress()) {
+				if (!inetAddress.isSiteLocalAddress()) {
 					// 非地区本地地址，指10.0.0.0 ~ 10.255.255.255、172.16.0.0 ~ 172.31.255.255、192.168.0.0 ~ 192.168.255.255
 					return inetAddress;
 				} else if (null == address2) {
@@ -757,7 +752,7 @@ public class NetUtil {
 		if (ip != null && StrUtil.indexOf(ip, ',') > 0) {
 			final List<String> ips = StrUtil.splitTrim(ip, ',');
 			for (final String subIp : ips) {
-				if (false == isUnknown(subIp)) {
+				if (!isUnknown(subIp)) {
 					ip = subIp;
 					break;
 				}

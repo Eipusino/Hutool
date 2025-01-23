@@ -17,6 +17,7 @@ import java.nio.charset.*;
  * @author looly
  */
 public class URLDecoder implements Serializable {
+	@Serial
 	private static final long serialVersionUID = 1L;
 
 	private static final byte ESCAPE_CHAR = '%';

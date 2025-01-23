@@ -16,6 +16,7 @@ import java.util.function.*;
  * @since 4.0.7
  */
 public class CamelCaseMap<K, V> extends FuncKeyMap<K, V> {
+	@Serial
 	private static final long serialVersionUID = 4043263744224569870L;
 
 	// ------------------------------------------------------------------------- Constructor start

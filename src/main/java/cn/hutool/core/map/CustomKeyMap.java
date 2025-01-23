@@ -1,5 +1,6 @@
 package cn.hutool.core.map;
 
+import java.io.*;
 import java.util.*;
 
 /**
@@ -11,6 +12,7 @@ import java.util.*;
  * @since 4.0.7
  */
 public abstract class CustomKeyMap<K, V> extends TransMap<K, V> {
+	@Serial
 	private static final long serialVersionUID = 4043263744224569870L;
 
 	/**

@@ -15,6 +15,7 @@ import java.util.function.*;
  * @since 3.0.2
  */
 public class CaseInsensitiveMap<K, V> extends FuncKeyMap<K, V> {
+	@Serial
 	private static final long serialVersionUID = 4043263744224569870L;
 
 	//------------------------------------------------------------------------- Constructor start

@@ -7,19 +7,20 @@ import java.util.*;
 
 /**
  * 组合，即C(n, m)<br>
- * 排列组合相关类 参考：http://cgs1999.iteye.com/blog/2327664
+ * 排列组合相关类 参考：<a href="http://cgs1999.iteye.com/blog/2327664">...</a>
  *
  * @author looly
  * @since 4.0.6
  */
 public class Combination implements Serializable {
+	@Serial
 	private static final long serialVersionUID = 1L;
 
 	private final String[] datas;
 
 	/**
 	 * 组合，即C(n, m)<br>
-	 * 排列组合相关类 参考：http://cgs1999.iteye.com/blog/2327664
+	 * 排列组合相关类 参考：<a href="http://cgs1999.iteye.com/blog/2327664">...</a>
 	 *
 	 * @param datas 用于组合的数据
 	 */

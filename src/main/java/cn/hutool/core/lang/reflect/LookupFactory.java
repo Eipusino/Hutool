@@ -28,7 +28,6 @@ public class LookupFactory {
 		//先查询jdk9 开始提供的java.lang.invoke.MethodHandles.privateLookupIn方法,
 		//如果没有说明是jdk8的版本.(不考虑jdk8以下版本)
 		try {
-			//noinspection JavaReflectionMemberAccess
 			privateLookupInMethod = MethodHandles.class.getMethod("privateLookupIn", Class.class, MethodHandles.Lookup.class);
 		} catch (NoSuchMethodException ignore) {
 			//ignore
@@ -38,8 +37,7 @@ public class LookupFactory {
 		//这种方式其实也适用于jdk9及以上的版本,但是上面优先,可以避免 jdk9 反射警告
 		if (privateLookupInMethod == null) {
 			try {
-				java8LookupConstructor = MethodHandles.Lookup.class.getDeclaredConstructor(Class.class, int.class);
-				java8LookupConstructor.setAccessible(true);
+				java8LookupConstructor = MethodHandles.Lookup.class.getDeclaredConstructor(Class.class, Class.class, int.class);
 			} catch (NoSuchMethodException e) {
 				//可能是jdk8 以下版本
 				throw new IllegalStateException(
@@ -66,7 +64,7 @@ public class LookupFactory {
 		}
 		//jdk 8
 		try {
-			return java8LookupConstructor.newInstance(callerClass, ALLOWED_MODES);
+			return java8LookupConstructor.newInstance(callerClass, null, ALLOWED_MODES);
 		} catch (Exception e) {
 			throw new IllegalStateException("no 'Lookup(Class, int)' method in java.lang.invoke.MethodHandles.", e);
 		}

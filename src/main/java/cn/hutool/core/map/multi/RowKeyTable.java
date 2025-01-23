@@ -17,7 +17,6 @@ import java.util.*;
  * @since 5.7.23
  */
 public class RowKeyTable<R, C, V> extends AbsTable<R, C, V> {
-
 	final Map<R, Map<C, V>> raw;
 	/**
 	 * 列的Map创建器，用于定义Table中Value对应Map类型
@@ -175,7 +174,7 @@ public class RowKeyTable<R, C, V> extends AbsTable<R, C, V> {
 			while (true) {
 				if (entryIterator.hasNext()) {
 					Map.Entry<C, V> entry = entryIterator.next();
-					if (false == seen.containsKey(entry.getKey())) {
+					if (!seen.containsKey(entry.getKey())) {
 						seen.put(entry.getKey(), entry.getValue());
 						return entry.getKey();
 					}

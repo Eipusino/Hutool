@@ -23,7 +23,6 @@ import java.util.stream.*;
  * @author huangchengxing
  */
 public class LinkedForestMap<K, V> implements ForestMap<K, V> {
-
 	/**
 	 * 节点集合
 	 */
@@ -277,7 +276,7 @@ public class LinkedForestMap<K, V> implements ForestMap<K, V> {
 		}
 
 		// 3.子节点存在，但是未与其他节点构成父子关系
-		if (false == childNode.hasParent()) {
+		if (!childNode.hasParent()) {
 			parentNode.addChild(childNode);
 		}
 		// 4.子节点存在，且已经与其他节点构成父子关系，但是允许子节点直接修改其父节点

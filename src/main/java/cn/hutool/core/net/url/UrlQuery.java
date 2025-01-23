@@ -22,7 +22,6 @@ import java.util.*;
  * @since 5.3.1
  */
 public class UrlQuery {
-
 	private final TableMap<CharSequence, CharSequence> query;
 	/**
 	 * 是否为x-www-form-urlencoded模式，此模式下空格会编码为'+'

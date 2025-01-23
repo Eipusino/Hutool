@@ -92,7 +92,7 @@ public class AppendableWriter extends Writer implements Appendable {
 
 	@Override
 	public void close() throws IOException {
-		if (false == closed) {
+		if (!closed) {
 			flush();
 			if (appendable instanceof Closeable) {
 				((Closeable) appendable).close();

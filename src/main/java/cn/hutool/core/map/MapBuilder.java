@@ -3,6 +3,7 @@ package cn.hutool.core.map;
 
 import cn.hutool.core.builder.*;
 
+import java.io.*;
 import java.util.*;
 import java.util.function.*;
 
@@ -14,6 +15,7 @@ import java.util.function.*;
  * @since 3.1.1
  */
 public class MapBuilder<K, V> implements Builder<Map<K, V>> {
+	@Serial
 	private static final long serialVersionUID = 1L;
 
 	private final Map<K, V> map;

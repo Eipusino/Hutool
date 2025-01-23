@@ -65,20 +65,20 @@ public class MapToBeanCopier<T> extends AbsCopier<Map<?, ?>, T> {
 			}
 
 			// 忽略不需要拷贝的 key,
-			if (false == copyOptions.testKeyFilter(sKeyStr)) {
+			if (!copyOptions.testKeyFilter(sKeyStr)) {
 				return;
 			}
 
 			// 检查目标字段可写性
 			final PropDesc tDesc = this.copyOptions.findPropDesc(targetPropDescMap, sKeyStr);
-			if (null == tDesc || false == tDesc.isWritable(this.copyOptions.transientSupport)) {
+			if (null == tDesc || !tDesc.isWritable(this.copyOptions.transientSupport)) {
 				// 字段不可写，跳过之
 				return;
 			}
 			sKeyStr = tDesc.getFieldName();
 
 			// 检查目标是否过滤属性
-			if (false == copyOptions.testPropertyFilter(tDesc.getField(), sValue)) {
+			if (!copyOptions.testPropertyFilter(tDesc.getField(), sValue)) {
 				return;
 			}
 

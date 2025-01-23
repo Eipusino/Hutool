@@ -15,7 +15,6 @@ import java.util.*;
  * @since 5.3.1
  */
 public class UrlPath {
-
 	private List<String> segments;
 	private boolean withEngTag;
 
@@ -155,7 +154,7 @@ public class UrlPath {
 			if (StrUtil.isEmpty(builder)) {
 				// 空白追加是保证以/开头
 				builder.append(CharUtil.SLASH);
-			}else if (false == StrUtil.endWith(builder, CharUtil.SLASH)) {
+			}else if (!StrUtil.endWith(builder, CharUtil.SLASH)) {
 				// 尾部没有/则追加，否则不追加
 				builder.append(CharUtil.SLASH);
 			}

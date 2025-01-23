@@ -1,5 +1,6 @@
 package cn.hutool.core.map;
 
+import java.io.*;
 import java.util.*;
 
 /**
@@ -10,6 +11,7 @@ import java.util.*;
  * @author pantao, looly
  */
 public class TolerantMap<K, V> extends MapWrapper<K, V> {
+	@Serial
 	private static final long serialVersionUID = -4158133823263496197L;
 
 	private final V defaultValue;
@@ -81,7 +83,7 @@ public class TolerantMap<K, V> extends MapWrapper<K, V> {
 		if (o == null || getClass() != o.getClass()) {
 			return false;
 		}
-		if (false == super.equals(o)) {
+		if (!super.equals(o)) {
 			return false;
 		}
 		final TolerantMap<?, ?> that = (TolerantMap<?, ?>) o;

@@ -23,6 +23,7 @@ import java.util.*;
  * @since 3.1.2
  */
 public class BeanDesc implements Serializable {
+	@Serial
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -138,7 +139,7 @@ public class BeanDesc implements Serializable {
 		PropDesc prop;
 		for (Field field : ReflectUtil.getFields(this.beanClass)) {
 			// 排除静态属性和对象子类
-			if (false == ModifierUtil.isStatic(field) && false == ReflectUtil.isOuterClassField(field)) {
+			if (!ModifierUtil.isStatic(field) && !ReflectUtil.isOuterClassField(field)) {
 				prop = createProp(field, gettersAndSetters);
 				// 只有不存在时才放入，防止父类属性覆盖子类属性
 				this.propMap.putIfAbsent(prop.getFieldName(), prop);
@@ -297,7 +298,7 @@ public class BeanDesc implements Serializable {
 		}
 
 		// 非标准Setter方法跳过
-		if (false == methodName.startsWith("set")) {
+		if (!methodName.startsWith("set")) {
 			return false;
 		}
 

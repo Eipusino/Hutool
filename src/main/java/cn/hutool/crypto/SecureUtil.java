@@ -28,7 +28,6 @@ import java.util.*;
  * @author Looly, Gsealy
  */
 public class SecureUtil {
-
 	/** Hutool自定义系统属性：是否解码Hex字符 issue#I90M9D */
 	public static String HUTOOL_CRYPTO_DECODE_HEX = "hutool.crypto.decodeHex";
 
@@ -111,7 +110,7 @@ public class SecureUtil {
 
 	/**
 	 * 生成私钥，仅用于非对称加密<br>
-	 * 算法见：https://docs.oracle.com/javase/7/docs/technotes/guides/security/StandardNames.html#KeyFactory
+	 * 算法见：<a href="https://docs.oracle.com/javase/7/docs/technotes/guides/security/StandardNames.html#KeyFactory">...</a>
 	 *
 	 * @param algorithm 算法
 	 * @param key       密钥
@@ -123,7 +122,7 @@ public class SecureUtil {
 
 	/**
 	 * 生成私钥，仅用于非对称加密<br>
-	 * 算法见：https://docs.oracle.com/javase/7/docs/technotes/guides/security/StandardNames.html#KeyFactory
+	 * 算法见：<a href="https://docs.oracle.com/javase/7/docs/technotes/guides/security/StandardNames.html#KeyFactory">...</a>
 	 *
 	 * @param algorithm 算法
 	 * @param keySpec   {@link KeySpec}
@@ -148,7 +147,7 @@ public class SecureUtil {
 
 	/**
 	 * 生成公钥，仅用于非对称加密<br>
-	 * 算法见：https://docs.oracle.com/javase/7/docs/technotes/guides/security/StandardNames.html#KeyFactory
+	 * 算法见：<a href="https://docs.oracle.com/javase/7/docs/technotes/guides/security/StandardNames.html#KeyFactory">...</a>
 	 *
 	 * @param algorithm 算法
 	 * @param key       密钥
@@ -160,7 +159,7 @@ public class SecureUtil {
 
 	/**
 	 * 生成公钥，仅用于非对称加密<br>
-	 * 算法见：https://docs.oracle.com/javase/7/docs/technotes/guides/security/StandardNames.html#KeyFactory
+	 * 算法见：<a href="https://docs.oracle.com/javase/7/docs/technotes/guides/security/StandardNames.html#KeyFactory">...</a>
 	 *
 	 * @param algorithm 算法
 	 * @param keySpec   {@link KeySpec}
@@ -173,7 +172,7 @@ public class SecureUtil {
 
 	/**
 	 * 生成用于非对称加密的公钥和私钥，仅用于非对称加密<br>
-	 * 密钥对生成算法见：https://docs.oracle.com/javase/7/docs/technotes/guides/security/StandardNames.html#KeyPairGenerator
+	 * 密钥对生成算法见：<a href="https://docs.oracle.com/javase/7/docs/technotes/guides/security/StandardNames.html#KeyPairGenerator">...</a>
 	 *
 	 * @param algorithm 非对称加密算法
 	 * @return {@link KeyPair}
@@ -184,7 +183,7 @@ public class SecureUtil {
 
 	/**
 	 * 生成用于非对称加密的公钥和私钥<br>
-	 * 密钥对生成算法见：https://docs.oracle.com/javase/7/docs/technotes/guides/security/StandardNames.html#KeyPairGenerator
+	 * 密钥对生成算法见：<a href="https://docs.oracle.com/javase/7/docs/technotes/guides/security/StandardNames.html#KeyPairGenerator">...</a>
 	 *
 	 * @param algorithm 非对称加密算法
 	 * @param keySize   密钥模（modulus ）长度
@@ -196,7 +195,7 @@ public class SecureUtil {
 
 	/**
 	 * 生成用于非对称加密的公钥和私钥<br>
-	 * 密钥对生成算法见：https://docs.oracle.com/javase/7/docs/technotes/guides/security/StandardNames.html#KeyPairGenerator
+	 * 密钥对生成算法见：<a href="https://docs.oracle.com/javase/7/docs/technotes/guides/security/StandardNames.html#KeyPairGenerator">...</a>
 	 *
 	 * @param algorithm 非对称加密算法
 	 * @param keySize   密钥模（modulus ）长度
@@ -209,7 +208,7 @@ public class SecureUtil {
 
 	/**
 	 * 生成用于非对称加密的公钥和私钥<br>
-	 * 密钥对生成算法见：https://docs.oracle.com/javase/7/docs/technotes/guides/security/StandardNames.html#KeyPairGenerator
+	 * 密钥对生成算法见：<a href="https://docs.oracle.com/javase/7/docs/technotes/guides/security/StandardNames.html#KeyPairGenerator">...</a>
 	 *
 	 * @param algorithm 非对称加密算法
 	 * @param params    {@link AlgorithmParameterSpec}
@@ -222,7 +221,7 @@ public class SecureUtil {
 
 	/**
 	 * 生成用于非对称加密的公钥和私钥<br>
-	 * 密钥对生成算法见：https://docs.oracle.com/javase/7/docs/technotes/guides/security/StandardNames.html#KeyPairGenerator
+	 * 密钥对生成算法见：<a href="https://docs.oracle.com/javase/7/docs/technotes/guides/security/StandardNames.html#KeyPairGenerator">...</a>
 	 *
 	 * @param algorithm 非对称加密算法
 	 * @param seed      种子
@@ -276,7 +275,7 @@ public class SecureUtil {
 	/**
 	 * 读取密钥库(Java Key Store，JKS) KeyStore文件<br>
 	 * KeyStore文件用于数字证书的密钥对保存<br>
-	 * see: http://snowolf.iteye.com/blog/391931
+	 * see: <a href="http://snowolf.iteye.com/blog/391931">...</a>
 	 *
 	 * @param in       {@link InputStream} 如果想从文件读取.keystore文件，使用 {@link FileUtil#getInputStream(File)} 读取
 	 * @param password 密码
@@ -289,7 +288,7 @@ public class SecureUtil {
 	/**
 	 * 读取KeyStore文件<br>
 	 * KeyStore文件用于数字证书的密钥对保存<br>
-	 * see: http://snowolf.iteye.com/blog/391931
+	 * see: <a href="http://snowolf.iteye.com/blog/391931">...</a>
 	 *
 	 * @param type     类型
 	 * @param in       {@link InputStream} 如果想从文件读取.keystore文件，使用 {@link FileUtil#getInputStream(File)} 读取
@@ -303,7 +302,7 @@ public class SecureUtil {
 	/**
 	 * 读取X.509 Certification文件<br>
 	 * Certification为证书文件<br>
-	 * see: http://snowolf.iteye.com/blog/391931
+	 * see: <a href="http://snowolf.iteye.com/blog/391931">...</a>
 	 *
 	 * @param in       {@link InputStream} 如果想从文件读取.cer文件，使用 {@link FileUtil#getInputStream(File)} 读取
 	 * @param password 密码
@@ -318,7 +317,7 @@ public class SecureUtil {
 	/**
 	 * 读取X.509 Certification文件<br>
 	 * Certification为证书文件<br>
-	 * see: http://snowolf.iteye.com/blog/391931
+	 * see: <a href="http://snowolf.iteye.com/blog/391931">...</a>
 	 *
 	 * @param in {@link InputStream} 如果想从文件读取.cer文件，使用 {@link FileUtil#getInputStream(File)} 读取
 	 * @return {@link KeyStore}
@@ -331,7 +330,7 @@ public class SecureUtil {
 	/**
 	 * 读取Certification文件<br>
 	 * Certification为证书文件<br>
-	 * see: http://snowolf.iteye.com/blog/391931
+	 * see: <a href="http://snowolf.iteye.com/blog/391931">...</a>
 	 *
 	 * @param type     类型，例如X.509
 	 * @param in       {@link InputStream} 如果想从文件读取.cer文件，使用 {@link FileUtil#getInputStream(File)} 读取
@@ -347,7 +346,7 @@ public class SecureUtil {
 	/**
 	 * 读取Certification文件<br>
 	 * Certification为证书文件<br>
-	 * see: http://snowolf.iteye.com/blog/391931
+	 * see: <a href="http://snowolf.iteye.com/blog/391931">...</a>
 	 *
 	 * @param type 类型，例如X.509
 	 * @param in   {@link InputStream} 如果想从文件读取.cer文件，使用 {@link FileUtil#getInputStream(File)} 读取

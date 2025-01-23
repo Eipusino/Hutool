@@ -166,7 +166,7 @@ public class FileCopier extends SrcToDestCopier<File, FileCopier>{
 		File dest = this.dest;
 		// check
 		Assert.notNull(src, "Source File is null !");
-		if (false == src.exists()) {
+		if (!src.exists()) {
 			throw new IORuntimeException("File not exist: " + src);
 		}
 		Assert.notNull(dest, "Destination File or directiory is null !");
@@ -175,7 +175,7 @@ public class FileCopier extends SrcToDestCopier<File, FileCopier>{
 		}
 
 		if (src.isDirectory()) {// 复制目录
-			if(dest.exists() && false == dest.isDirectory()) {
+			if(dest.exists() && !dest.isDirectory()) {
 				//源为目录，目标为文件，抛出IO异常
 				throw new IORuntimeException("Src is a directory but dest is a file!");
 			}
@@ -201,16 +201,16 @@ public class FileCopier extends SrcToDestCopier<File, FileCopier>{
 	 * @throws IORuntimeException IO异常
 	 */
 	private void internalCopyDirContent(File src, File dest) throws IORuntimeException {
-		if (null != copyFilter && false == copyFilter.accept(src)) {
+		if (null != copyFilter && !copyFilter.accept(src)) {
 			//被过滤的目录跳过
 			return;
 		}
 
-		if (false == dest.exists()) {
+		if (!dest.exists()) {
 			//目标为不存在路径，创建为目录
 			//noinspection ResultOfMethodCallIgnored
 			dest.mkdirs();
-		} else if (false == dest.isDirectory()) {
+		} else if (!dest.isDirectory()) {
 			throw new IORuntimeException(StrUtil.format("Src [{}] is a directory but dest [{}] is a file!", src.getPath(), dest.getPath()));
 		}
 
@@ -245,7 +245,7 @@ public class FileCopier extends SrcToDestCopier<File, FileCopier>{
 	 * @throws IORuntimeException IO异常
 	 */
 	private File internalCopyFile(File src, File dest) throws IORuntimeException {
-		if (null != copyFilter && false == copyFilter.accept(src)) {
+		if (null != copyFilter && !copyFilter.accept(src)) {
 			//被过滤的文件跳过
 			return src;
 		}
@@ -257,7 +257,7 @@ public class FileCopier extends SrcToDestCopier<File, FileCopier>{
 				dest = new File(dest, src.getName());
 			}
 
-			if(dest.exists() && false == isOverride) {
+			if(dest.exists() && !isOverride) {
 				//非覆盖模式跳过
 				return src;
 			}

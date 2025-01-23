@@ -265,7 +265,7 @@ public class FileNameUtil {
 	 * @since 3.3.1
 	 */
 	public static boolean containsInvalid(String fileName) {
-		return (false == StrUtil.isBlank(fileName)) && ReUtil.contains(FILE_NAME_INVALID_PATTERN_WIN, fileName);
+		return (!StrUtil.isBlank(fileName)) && ReUtil.contains(FILE_NAME_INVALID_PATTERN_WIN, fileName);
 	}
 
 	/**

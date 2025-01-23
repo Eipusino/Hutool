@@ -11,11 +11,11 @@ import java.util.*;
  * @author looly
  */
 public class MaskBit {
-
 	/**
 	 * 掩码位与掩码的点分十进制的双向对应关系
 	 */
 	private static final BiMap<Integer, String> MASK_BIT_MAP;
+
 	static {
 		MASK_BIT_MAP = new BiMap<>(new HashMap<>(32));
 		MASK_BIT_MAP.put(1, "128.0.0.0");

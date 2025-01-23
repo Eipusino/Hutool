@@ -16,7 +16,6 @@ import java.util.function.*;
  * @see TreeEntry
  */
 public interface ForestMap<K, V> extends Map<K, TreeEntry<K, V>> {
-
 	// ===================== Map接口方法的重定义 =====================
 
 	/**
@@ -325,5 +324,4 @@ public interface ForestMap<K, V> extends Map<K, TreeEntry<K, V>> {
 				.map(Map::values)
 				.orElseGet(Collections::emptyList);
 	}
-
 }

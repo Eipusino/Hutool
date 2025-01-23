@@ -18,7 +18,6 @@ import java.util.stream.*;
  * @since 5.6.7
  */
 public class StreamUtil {
-
 	@SafeVarargs
 	public static <T> Stream<T> of(T... array) {
 		Assert.notNull(array, "Array must be not null!");

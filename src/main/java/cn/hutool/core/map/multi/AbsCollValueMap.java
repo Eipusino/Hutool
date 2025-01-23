@@ -3,6 +3,7 @@ package cn.hutool.core.map.multi;
 import cn.hutool.core.collection.*;
 import cn.hutool.core.map.*;
 
+import java.io.*;
 import java.util.*;
 
 /**
@@ -15,6 +16,7 @@ import java.util.*;
  * @since 5.7.4
  */
 public abstract class AbsCollValueMap<K, V, C extends Collection<V>> extends MapWrapper<K, C> {
+	@Serial
 	private static final long serialVersionUID = 1L;
 
 	/**

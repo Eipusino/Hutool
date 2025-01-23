@@ -15,6 +15,7 @@ import java.util.*;
  * @since 3.2.0
  */
 public class MapProxy implements Map<Object, Object>, OptNullBasicTypeFromObjectGetter<Object>, InvocationHandler, Serializable {
+	@Serial
 	private static final long serialVersionUID = 1L;
 
 	@SuppressWarnings("rawtypes")
@@ -82,7 +83,7 @@ public class MapProxy implements Map<Object, Object>, OptNullBasicTypeFromObject
 		return map.remove(key);
 	}
 
-	@SuppressWarnings({"unchecked", "NullableProblems"})
+	@SuppressWarnings({"unchecked"})
 	@Override
 	public void putAll(Map<?, ?> m) {
 		map.putAll(m);
@@ -93,19 +94,19 @@ public class MapProxy implements Map<Object, Object>, OptNullBasicTypeFromObject
 		map.clear();
 	}
 
-	@SuppressWarnings({"unchecked", "NullableProblems"})
+	@SuppressWarnings({"unchecked"})
 	@Override
 	public Set<Object> keySet() {
 		return map.keySet();
 	}
 
-	@SuppressWarnings({"unchecked", "NullableProblems"})
+	@SuppressWarnings({"unchecked"})
 	@Override
 	public Collection<Object> values() {
 		return map.values();
 	}
 
-	@SuppressWarnings({"unchecked", "NullableProblems"})
+	@SuppressWarnings({"unchecked"})
 	@Override
 	public Set<Entry<Object, Object>> entrySet() {
 		return map.entrySet();
@@ -133,7 +134,7 @@ public class MapProxy implements Map<Object, Object>, OptNullBasicTypeFromObject
 				}
 
 				if (StrUtil.isNotBlank(fieldName)) {
-					if (false == this.containsKey(fieldName)) {
+					if (!this.containsKey(fieldName)) {
 						// 驼峰不存在转下划线尝试
 						fieldName = StrUtil.toUnderlineCase(fieldName);
 					}

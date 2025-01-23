@@ -7,7 +7,7 @@ import java.util.*;
 
 /**
  * 数学表达式计算工具类<br>
- * 见：https://github.com/dromara/hutool/issues/1090#issuecomment-693750140
+ * 见：<a href="https://github.com/dromara/hutool/issues/1090#issuecomment-693750140">...</a>
  *
  * @author trainliang, looly
  * @since 5.4.3

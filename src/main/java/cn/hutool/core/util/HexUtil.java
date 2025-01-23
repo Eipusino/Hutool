@@ -3,7 +3,6 @@ package cn.hutool.core.util;
 import cn.hutool.core.codec.*;
 import cn.hutool.core.exceptions.*;
 
-import java.awt.*;
 import java.math.*;
 import java.nio.charset.*;
 
@@ -12,7 +11,7 @@ import java.nio.charset.*;
  * 例如十进制数57，在二进制写作111001，在16进制写作39。<br>
  * 像java,c这样的语言为了区分十六进制和十进制数值,会在十六进制数的前面加上 0x,比如0x20是十进制的32,而不是十进制的20<br>
  * <p>
- * 参考：https://my.oschina.net/xinxingegeya/blog/287476
+ * 参考：<a href="https://my.oschina.net/xinxingegeya/blog/287476">...</a>
  *
  * @author Looly
  */
@@ -189,59 +188,6 @@ public class HexUtil {
 	 */
 	public static byte[] decodeHex(CharSequence hexData) {
 		return Base16Codec.CODEC_LOWER.decode(hexData);
-	}
-
-	// ---------------------------------------------------------------------------------------- Color
-
-	/**
-	 * 将{@link Color}编码为Hex形式
-	 *
-	 * @param color {@link Color}
-	 * @return Hex字符串
-	 * @since 3.0.8
-	 */
-	public static String encodeColor(Color color) {
-		return encodeColor(color, "#");
-	}
-
-	/**
-	 * 将{@link Color}编码为Hex形式
-	 *
-	 * @param color  {@link Color}
-	 * @param prefix 前缀字符串，可以是#、0x等
-	 * @return Hex字符串
-	 * @since 3.0.8
-	 */
-	public static String encodeColor(Color color, String prefix) {
-		final StringBuilder builder = new StringBuilder(prefix);
-		String colorHex;
-		colorHex = Integer.toHexString(color.getRed());
-		if (1 == colorHex.length()) {
-			builder.append('0');
-		}
-		builder.append(colorHex);
-		colorHex = Integer.toHexString(color.getGreen());
-		if (1 == colorHex.length()) {
-			builder.append('0');
-		}
-		builder.append(colorHex);
-		colorHex = Integer.toHexString(color.getBlue());
-		if (1 == colorHex.length()) {
-			builder.append('0');
-		}
-		builder.append(colorHex);
-		return builder.toString();
-	}
-
-	/**
-	 * 将Hex颜色值转为
-	 *
-	 * @param hexColor 16进制颜色值，可以以#开头，也可以用0x开头
-	 * @return {@link Color}
-	 * @since 3.0.8
-	 */
-	public static Color decodeColor(String hexColor) {
-		return Color.decode(hexColor);
 	}
 
 	/**

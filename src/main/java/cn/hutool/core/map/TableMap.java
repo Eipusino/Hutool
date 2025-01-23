@@ -17,6 +17,7 @@ import java.util.function.*;
  * @author looly
  */
 public class TableMap<K, V> implements Map<K, V>, Iterable<Map.Entry<K, V>>, Serializable {
+	@Serial
 	private static final long serialVersionUID = 1L;
 
 	private static final int DEFAULT_CAPACITY = 10;

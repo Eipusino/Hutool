@@ -5,6 +5,7 @@ import cn.hutool.core.io.*;
 import cn.hutool.core.util.*;
 
 import javax.net.ssl.*;
+import java.io.*;
 import java.security.*;
 
 /**
@@ -22,6 +23,7 @@ import java.security.*;
  * @since 5.5.2
  */
 public class SSLContextBuilder implements SSLProtocols, Builder<SSLContext> {
+	@Serial
 	private static final long serialVersionUID = 1L;
 	
 	private String protocol = TLS;

@@ -14,7 +14,6 @@ import java.util.*;
  * @since 5.4.2
  */
 public class ActualTypeMapperPool {
-
 	private static final WeakConcurrentMap<Type, Map<Type, Type>> CACHE = new WeakConcurrentMap<>();
 
 	/**
@@ -102,7 +101,7 @@ public class ActualTypeMapperPool {
 			for (int i = 0; i < typeParameters.length; i++) {
 				value = typeArguments[i];
 				// 跳过泛型变量对应泛型变量的情况
-				if(false == value instanceof TypeVariable){
+				if(!(value instanceof TypeVariable)){
 					typeMap.put(typeParameters[i], value);
 				}
 			}

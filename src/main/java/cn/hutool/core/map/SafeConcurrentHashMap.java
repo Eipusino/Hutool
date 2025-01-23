@@ -2,6 +2,7 @@ package cn.hutool.core.map;
 
 import cn.hutool.core.util.*;
 
+import java.io.*;
 import java.util.*;
 import java.util.concurrent.*;
 import java.util.function.*;
@@ -17,6 +18,7 @@ import java.util.function.*;
  * @param <V> 值类型
  */
 public class SafeConcurrentHashMap<K, V> extends ConcurrentHashMap<K, V> {
+	@Serial
 	private static final long serialVersionUID = 1L;
 
 	// region == 构造 ==

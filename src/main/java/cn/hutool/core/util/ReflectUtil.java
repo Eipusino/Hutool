@@ -327,7 +327,7 @@ public class ReflectUtil {
 
 		final Class<?> fieldType = field.getType();
 		if (null != value) {
-			if (false == fieldType.isAssignableFrom(value.getClass())) {
+			if (!fieldType.isAssignableFrom(value.getClass())) {
 				//对于类型不同的字段，尝试转换，转换失败则使用原对象类型
 				final Object targetValue = Convert.convert(fieldType, value);
 				if (null != targetValue) {
@@ -426,7 +426,7 @@ public class ReflectUtil {
 	 */
 	public static List<Method> getPublicMethods(Class<?> clazz, Method... excludeMethods) {
 		final HashSet<Method> excludeMethodSet = CollUtil.newHashSet(excludeMethods);
-		return getPublicMethods(clazz, method -> false == excludeMethodSet.contains(method));
+		return getPublicMethods(clazz, method -> !excludeMethodSet.contains(method));
 	}
 
 	/**
@@ -438,7 +438,7 @@ public class ReflectUtil {
 	 */
 	public static List<Method> getPublicMethods(Class<?> clazz, String... excludeMethodNames) {
 		final HashSet<String> excludeMethodNameSet = CollUtil.newHashSet(excludeMethodNames);
-		return getPublicMethods(clazz, method -> false == excludeMethodNameSet.contains(method.getName()));
+		return getPublicMethods(clazz, method -> !excludeMethodNameSet.contains(method.getName()));
 	}
 
 	/**
@@ -686,14 +686,14 @@ public class ReflectUtil {
 		final UniqueKeySet<String, Method> result = new UniqueKeySet<>(true, ReflectUtil::getUniqueKey);
 		Class<?> searchType = beanClass;
 		while (searchType != null) {
-			if (false == withMethodFromObject && Object.class == searchType) {
+			if (!withMethodFromObject && Object.class == searchType) {
 				break;
 			}
 			result.addAllIfAbsent(Arrays.asList(searchType.getDeclaredMethods()));
 			result.addAllIfAbsent(getDefaultMethodsFromInterface(searchType));
 
 
-			searchType = (withSupers && false == searchType.isInterface()) ? searchType.getSuperclass() : null;
+			searchType = (withSupers && !searchType.isInterface()) ? searchType.getSuperclass() : null;
 		}
 
 		return result.toArray(new Method[0]);
@@ -708,7 +708,7 @@ public class ReflectUtil {
 	public static boolean isEqualsMethod(Method method) {
 		if (method == null ||
 			1 != method.getParameterCount() ||
-			false == "equals".equals(method.getName())) {
+				!"equals".equals(method.getName())) {
 			return false;
 		}
 		return (method.getParameterTypes()[0] == Object.class);
@@ -798,14 +798,11 @@ public class ReflectUtil {
 		if (ignoreCase) {
 			name = name.toLowerCase();
 		}
-		switch (parameterCount) {
-			case 0:
-				return name.startsWith("get") || name.startsWith("is");
-			case 1:
-				return name.startsWith("set");
-			default:
-				return false;
-		}
+		return switch (parameterCount) {
+			case 0 -> name.startsWith("get") || name.startsWith("is");
+			case 1 -> name.startsWith("set");
+			default -> false;
+		};
 	}
 	// --------------------------------------------------------------------------------------------------------- newInstance
 
@@ -820,7 +817,7 @@ public class ReflectUtil {
 	@SuppressWarnings("unchecked")
 	public static <T> T newInstance(String clazz) throws UtilException {
 		try {
-			return (T) Class.forName(clazz).newInstance();
+			return (T) Class.forName(clazz).getConstructor().newInstance();
 		} catch (Exception e) {
 			throw new UtilException(e, "Instance class [{}] error!", clazz);
 		}
@@ -1046,7 +1043,7 @@ public class ReflectUtil {
 				} else if (args[i] instanceof NullWrapperBean) {
 					//如果是通过NullWrapperBean传递的null参数,直接赋值null
 					actualArgs[i] = null;
-				} else if (false == parameterTypes[i].isAssignableFrom(args[i].getClass())) {
+				} else if (!parameterTypes[i].isAssignableFrom(args[i].getClass())) {
 					//对于类型不同的字段，尝试转换，转换失败则使用原对象类型
 					final Object targetValue = Convert.convertWithCheck(parameterTypes[i], args[i], null, true);
 					if (null != targetValue) {
@@ -1102,7 +1099,7 @@ public class ReflectUtil {
 	 * @since 4.6.8
 	 */
 	public static <T extends AccessibleObject> T setAccessible(T accessibleObject) {
-		if (null != accessibleObject && false == accessibleObject.isAccessible()) {
+		if (accessibleObject != null) {
 			accessibleObject.setAccessible(true);
 		}
 		return accessibleObject;
@@ -1176,7 +1173,7 @@ public class ReflectUtil {
 		List<Method> result = new ArrayList<>();
 		for (Class<?> ifc : clazz.getInterfaces()) {
 			for (Method m : ifc.getMethods()) {
-				if (false == ModifierUtil.isAbstract(m)) {
+				if (!ModifierUtil.isAbstract(m)) {
 					result.add(m);
 				}
 			}

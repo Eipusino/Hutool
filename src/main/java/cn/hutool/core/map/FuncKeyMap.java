@@ -1,5 +1,6 @@
 package cn.hutool.core.map;
 
+import java.io.*;
 import java.util.*;
 import java.util.function.*;
 
@@ -12,6 +13,7 @@ import java.util.function.*;
  * @since 5.6.0
  */
 public class FuncKeyMap<K, V> extends CustomKeyMap<K, V> {
+	@Serial
 	private static final long serialVersionUID = 1L;
 
 	private final Function<Object, K> keyFunc;

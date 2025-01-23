@@ -28,7 +28,7 @@ public class PathUtil {
 	 */
 	public static boolean isDirEmpty(Path dirPath) {
 		try (DirectoryStream<Path> dirStream = Files.newDirectoryStream(dirPath)) {
-			return false == dirStream.iterator().hasNext();
+			return !dirStream.iterator().hasNext();
 		} catch (IOException e) {
 			throw new IORuntimeException(e);
 		}
@@ -633,7 +633,7 @@ public class PathUtil {
 	 * @since 5.8.14
 	 */
 	public static boolean isExistsAndNotDirectory(final Path path, final boolean isFollowLinks) {
-		return exists(path, isFollowLinks) && false == isDirectory(path, isFollowLinks);
+		return exists(path, isFollowLinks) && !isDirectory(path, isFollowLinks);
 	}
 
 	/**
@@ -685,7 +685,7 @@ public class PathUtil {
 	 * @since 5.5.7
 	 */
 	public static Path mkdir(Path dir) {
-		if (null != dir && false == exists(dir, false)) {
+		if (null != dir && !exists(dir, false)) {
 			try {
 				Files.createDirectories(dir);
 			} catch (IOException e) {
@@ -760,7 +760,7 @@ public class PathUtil {
 			Files.delete(path);
 		} catch (AccessDeniedException e) {
 			// 可能遇到只读文件，无法删除.使用 file 方法删除
-			if (false == path.toFile().delete()) {
+			if (!path.toFile().delete()) {
 				throw e;
 			}
 		}

@@ -104,7 +104,7 @@ public class WatchServer extends Thread implements Closeable, Serializable {
 				});
 			}
 		} catch (IOException e) {
-			if (false == (e instanceof AccessDeniedException)) {
+			if (!(e instanceof AccessDeniedException)) {
 				throw new WatchException(e);
 			}
 
@@ -133,7 +133,7 @@ public class WatchServer extends Thread implements Closeable, Serializable {
 
 		for (WatchEvent<?> event : wk.pollEvents()) {
 			// 如果监听文件，检查当前事件是否与所监听文件关联
-			if (null != watchFilter && false == watchFilter.accept(event)) {
+			if (null != watchFilter && !watchFilter.accept(event)) {
 				continue;
 			}
 
