@@ -14,7 +14,6 @@ import java.util.*;
  * @since 4.0.7
  */
 public class CamelCaseLinkedMap<K, V> extends CamelCaseMap<K, V> {
-	@Serial
 	private static final long serialVersionUID = 4043263744224569870L;
 
 	// ------------------------------------------------------------------------- Constructor start

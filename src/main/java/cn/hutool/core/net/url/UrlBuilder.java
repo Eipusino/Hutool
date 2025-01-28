@@ -22,8 +22,7 @@ import java.nio.charset.*;
  * @since 5.3.1
  */
 public final class UrlBuilder implements Builder<String> {
-	@Serial
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1401700994520305005L;
 	private static final String DEFAULT_SCHEME = "http";
 
 	/**

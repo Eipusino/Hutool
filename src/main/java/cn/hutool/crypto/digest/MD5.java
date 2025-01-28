@@ -10,8 +10,7 @@ import java.nio.charset.*;
  * @since 4.4.3
  */
 public class MD5 extends Digester {
-	@Serial
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 2903142494156606056L;
 
 	// issue#I6ZIQH
 	// MD5算法不使用BC库，使用JDK默认以提高初始性能

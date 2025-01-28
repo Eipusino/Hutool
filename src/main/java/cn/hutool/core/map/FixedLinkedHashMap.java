@@ -13,7 +13,6 @@ import java.util.function.*;
  * @author looly
  */
 public class FixedLinkedHashMap<K, V> extends LinkedHashMap<K, V> {
-	@Serial
 	private static final long serialVersionUID = -629171177321416095L;
 
 	/**

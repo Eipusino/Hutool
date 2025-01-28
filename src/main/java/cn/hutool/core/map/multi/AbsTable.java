@@ -173,8 +173,7 @@ public abstract class AbsTable<R, C, V> implements Table<R, C, V> {
 	 * @param <V> 值类型
 	 */
 	private static class SimpleCell<R, C, V> implements Cell<R, C, V>, Serializable {
-		@Serial
-		private static final long serialVersionUID = 1L;
+		private static final long serialVersionUID = -6570879141811877156L;
 
 		private final R rowKey;
 		private final C columnKey;

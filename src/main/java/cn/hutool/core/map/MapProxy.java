@@ -15,8 +15,7 @@ import java.util.*;
  * @since 3.2.0
  */
 public class MapProxy implements Map<Object, Object>, OptNullBasicTypeFromObjectGetter<Object>, InvocationHandler, Serializable {
-	@Serial
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -4287678341626981818L;
 
 	@SuppressWarnings("rawtypes")
 	Map map;

@@ -13,8 +13,7 @@ import java.nio.charset.*;
  *
  */
 public class FileWrapper implements Serializable{
-	@Serial
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -7033100119026604860L;
 
 	protected File file;
 	protected Charset charset;

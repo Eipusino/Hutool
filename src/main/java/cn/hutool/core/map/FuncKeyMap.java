@@ -13,8 +13,7 @@ import java.util.function.*;
  * @since 5.6.0
  */
 public class FuncKeyMap<K, V> extends CustomKeyMap<K, V> {
-	@Serial
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 6522169336392337888L;
 
 	private final Function<Object, K> keyFunc;
 

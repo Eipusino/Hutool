@@ -15,8 +15,7 @@ import java.util.*;
  * @since 5.1.0
  */
 public class WatchServer extends Thread implements Closeable, Serializable {
-	@Serial
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 4203900405195272364L;
 
 	/**
 	 * 监听服务

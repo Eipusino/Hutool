@@ -13,8 +13,7 @@ import java.util.*;
  * @since 4.0.7
  */
 public class Arrangement implements Serializable {
-	@Serial
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -7054828968298946620L;
 
 	private final String[] datas;
 

@@ -23,8 +23,7 @@ import java.security.*;
  * @since 5.5.2
  */
 public class SSLContextBuilder implements SSLProtocols, Builder<SSLContext> {
-	@Serial
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -3197623934812866968L;
 	
 	private String protocol = TLS;
 	private KeyManager[] keyManagers;

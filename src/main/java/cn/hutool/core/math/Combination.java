@@ -13,8 +13,7 @@ import java.util.*;
  * @since 4.0.6
  */
 public class Combination implements Serializable {
-	@Serial
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -3912420957176008845L;
 
 	private final String[] datas;
 

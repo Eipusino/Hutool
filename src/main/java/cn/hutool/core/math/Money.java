@@ -44,7 +44,6 @@ import java.util.*;
  * @since 5.0.4
  */
 public class Money implements Serializable, Comparable<Money> {
-	@Serial
 	private static final long serialVersionUID = -1004117971993390293L;
 
 	/**

@@ -15,8 +15,7 @@ import java.util.function.*;
  * @since 4.3.3
  */
 public class MapWrapper<K, V> implements Map<K, V>, Iterable<Map.Entry<K, V>>, Serializable, Cloneable {
-	@Serial
-	private static final long serialVersionUID = -7524578042008586382L;
+	private static final long serialVersionUID = 708901789930546302L;
 
 	/**
 	 * 默认增长因子

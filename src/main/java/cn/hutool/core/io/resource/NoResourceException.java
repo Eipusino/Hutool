@@ -11,7 +11,6 @@ import cn.hutool.core.util.*;
  * @since 4.0.2
  */
 public class NoResourceException extends IORuntimeException {
-	@java.io.Serial
 	private static final long serialVersionUID = -623254467603299129L;
 
 	public NoResourceException(Throwable e) {

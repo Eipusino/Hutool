@@ -18,8 +18,7 @@ import java.util.function.*;
  * @param <V> 值类型
  */
 public class SafeConcurrentHashMap<K, V> extends ConcurrentHashMap<K, V> {
-	@Serial
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -3826020519929437234L;
 
 	// region == 构造 ==
 

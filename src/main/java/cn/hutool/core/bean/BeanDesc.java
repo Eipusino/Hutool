@@ -23,8 +23,7 @@ import java.util.*;
  * @since 3.1.2
  */
 public class BeanDesc implements Serializable {
-	@Serial
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 6969233489544318014L;
 
 	/**
 	 * Bean类

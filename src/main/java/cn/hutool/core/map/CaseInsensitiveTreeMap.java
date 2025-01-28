@@ -14,7 +14,6 @@ import java.util.*;
  * @since 3.3.1
  */
 public class CaseInsensitiveTreeMap<K, V> extends CaseInsensitiveMap<K, V> {
-	@Serial
 	private static final long serialVersionUID = 4043263744224569870L;
 
 	// ------------------------------------------------------------------------- Constructor start

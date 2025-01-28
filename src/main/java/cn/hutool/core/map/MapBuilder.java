@@ -15,8 +15,7 @@ import java.util.function.*;
  * @since 3.1.1
  */
 public class MapBuilder<K, V> implements Builder<Map<K, V>> {
-	@Serial
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -4205948278646563044L;
 
 	private final Map<K, V> map;
 

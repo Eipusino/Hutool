@@ -8,15 +8,20 @@ repositories {
 
 version = '1.0'
 
+java {
+    targetCompatibility = JavaVersion.VERSION_11
+    sourceCompatibility = JavaVersion.VERSION_17
+}
+
 dependencies {
     implementation "org.bouncycastle:bcpkix-jdk18on:$bounVers"
+
+    annotationProcessor files("libs/jabel.jar")
 }
 
 tasks.withType(JavaCompile).configureEach {
-    sourceCompatibility = JavaVersion.VERSION_16
-    targetCompatibility = JavaVersion.VERSION_16
-
     options.encoding = 'UTF-8'
+    options.compilerArgs.addAll(['--release', '11'])
 }
 
 jar {

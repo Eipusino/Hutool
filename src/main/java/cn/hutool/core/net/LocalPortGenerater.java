@@ -13,8 +13,7 @@ import java.util.concurrent.atomic.*;
  *
  */
 public class LocalPortGenerater implements Serializable{
-	@Serial
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -8977367667285546889L;
 
 	/** 备选的本地端口 */
 	private final AtomicInteger alternativePort;
